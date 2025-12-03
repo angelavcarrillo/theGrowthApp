@@ -25,7 +25,7 @@ ZStack {
                 .scaleEffect(phase ? 1.2 : 1.0)
                             
                 }animation: {phase in
-                .spring(duration: 0.3)
+                        .bouncy(duration: 0.3)
                             
             }
                             
