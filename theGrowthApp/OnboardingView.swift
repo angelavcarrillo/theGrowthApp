@@ -22,7 +22,7 @@ struct OnboardingView: View {
                     .frame(width:500,height:500)
                     .padding  (.top, -120)
                 
-                Text("Welcome to Growth")
+                Text("Welcome to Growth!")
                     .font(.largeTitle)
                     .padding(.top, -150)
                 
