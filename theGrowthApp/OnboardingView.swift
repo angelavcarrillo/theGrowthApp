@@ -11,41 +11,60 @@ struct OnboardingView: View {
     
     var body: some View {
         
+        NavigationStack {
+        
         ZStack {
             
             Color.customBeige
                 .ignoresSafeArea() // fills whole screen
             
-            VStack {
-                Image(.leaf)
-                    .resizable()
-                    .frame(width:500,height:500)
-                    .padding  (.top, -120)
-                
-                Text("Welcome to Growth!")
-                    .font(.largeTitle)
-                    .padding(.top, -150)
-                
-                Text("The app designed to grow with you and your goals.")
-                    .font (.system(size: 24))
-                    .multilineTextAlignment(.center)
-                    .padding(.top, -90)
-                    .padding(.horizontal, 60)
-                
-                
-                Text("Select up to 3 goals, complete tasks and watch your tree grow!")
-                    .font (.system(size: 24))
-                    .multilineTextAlignment(.center)
-                    .padding(.top, -20)
-                    .padding(.horizontal, 60)
-                
+                VStack {
+                    Image(.leaf)
+                        .resizable()
+                        .interpolation(.none)
+                        .frame(width:500,height:500)
+                        .padding  (.top, -200)
+                    
+                    Text("Welcome to Growth!")
+                        .font(.largeTitle)
+                        .padding(.top, -150)
+                    
+                    Text("The app designed to grow with you and your goals.")
+                        .font (.system(size: 24))
+                        .multilineTextAlignment(.center)
+                        .padding(.top ,-75)
+                        .padding(.horizontal, 60)
+                    
+                    
+                    Text("Select up to 3 goals, complete tasks and watch your tree grow!")
+                        .font (.system(size: 24))
+                        .multilineTextAlignment(.center)
+                        .padding()
+                        .padding(.horizontal, 60)
+                    
+                    NavigationLink(destination: CategoryPage()) {
+                        Text("Next")
+                            .font(.system(size: 20, weight: .semibold))
+                            .foregroundColor(.white)
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(Color.customGreen)
+                            .cornerRadius(12)
+                    }
+                    
+                    }
+            
+                    }
                 
             }
-            .frame(maxHeight: .infinity, alignment: .top)
+        
         }
-    }
-}
     
+    }
+
+
+
+
 #Preview {
     OnboardingView()
 }
