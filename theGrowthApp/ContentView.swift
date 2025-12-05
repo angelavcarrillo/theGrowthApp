@@ -1,9 +1,4 @@
-//
-//  ContentView.swift
-//  theGrowthApp
-//
-//  Created by Angela on 12/3/25.
-//
+//created by angela carrillo
 
 import SwiftUI
 
@@ -12,6 +7,7 @@ struct ContentView: View {
 @State private var selectedScreen: Int = 0
 @State private var floating = false
 let leafCount = 20
+    
     
     var leaves: [FloatingLeaves]{
         (0..<leafCount).map{
@@ -83,7 +79,7 @@ struct FloatingLeaves: View{
             .resizable()
             .scaledToFit()
             //.opacity(0.50)
-            .frame(width: 200, height: 200)
+            .frame(width: 130, height: 130)
             .offset(x: xOffset, y: yoffset)
             .rotationEffect(.degrees(floating ? -10 : 5))
             .animation(.easeInOut(duration: 4.0).repeatForever(autoreverses: true),value: floating)
