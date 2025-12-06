@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "halfFullRaindrop.png",
+      "filename" : "halfulfdrop.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "halfulfdrop 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "halfulfdrop 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

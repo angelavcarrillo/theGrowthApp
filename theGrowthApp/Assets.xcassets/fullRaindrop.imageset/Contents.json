@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "raindrop.png",
+      "filename" : "fulldrop.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "fulldrop 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "fulldrop 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
