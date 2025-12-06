@@ -12,8 +12,8 @@ let leafCount = 20
     var leaves: [FloatingLeaves]{
         (0..<leafCount).map{
             _ in FloatingLeaves(
-                xOffset: CGFloat.random(in: -250...500),
-                yoffset: CGFloat.random(in: -500...500),
+                xAxis: CGFloat.random(in: -250...500),
+                yAxis: CGFloat.random(in: -500...500),
                 
             )
         }
@@ -71,16 +71,16 @@ var body: some View {
 }
 struct FloatingLeaves: View{
     @State private var floating = false
-    let xOffset: CGFloat
-    let yoffset: CGFloat
+    let xAxis: CGFloat
+    let yAxis: CGFloat
     
     var body: some View{
         Image("leaf")
             .resizable()
             .scaledToFit()
             //.opacity(0.50)
-            .frame(width: 130, height: 130)
-            .offset(x: xOffset, y: yoffset)
+            .frame(width: 230, height: 230)
+            .offset(x: xAxis, y: yAxis)
             .rotationEffect(.degrees(floating ? -10 : 5))
             .animation(.easeInOut(duration: 4.0).repeatForever(autoreverses: true),value: floating)
             .onAppear {
