@@ -26,9 +26,9 @@ enum ImageCategory: CaseIterable, Hashable{
     var allQuestions: [String]{
         switch self{
         case.film: return["Research film production steps for an iphone"," Watch a TV show or movie", "Reflection"]
-        case.travel: return ["Watch a travel vlog for a place you want to visit", "Create a Mood Board by Adding 2-3 pictures of your ideal trip", "Reflection"]
-        case.finance: return ["Write 3 issues you want to correct with your business website", "Make a weekly or montlhy budget that includes costs for busines", "Reflection"]
-        case.cooking: return ["Complete a recipe from youtube", "cook or bake with a lone one their favorite recipe", "Reflection"]
+        case.travel: return ["Watch a travel vlog for a place you want to visit", "Create a Mood Board of your ideal trip", "Reflection"]
+        case.finance: return ["Write 3 issues you want to correct on business website", "Make a weekly/montlhy budget that includes business costs ", "Create a marketing plan: Reflection"]
+        case.cooking: return ["Complete a recipe from youtube", "cook or bake with someone their favorite recipe", "Reflection"]
         }
     }
     
