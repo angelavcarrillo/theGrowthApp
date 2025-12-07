@@ -1,61 +1,67 @@
-//
-//  ContentView.swift
-//  theGrowthApp
-//
-//  Created by Angela on 12/3/25.
-//
+//created by angela carrillo
 
 import SwiftUI
 
 struct ContentView: View {
 @State private var toolbarSelection = 0
 @State private var selectedScreen: Int = 0
-            
-            
+@State private var floating = false
+let leafCount = 20
+    
+    
+    var leaves: [FloatingLeaves]{
+        (0..<leafCount).map{
+            _ in FloatingLeaves(
+                xAxis: CGFloat.random(in: -250...500),
+                yAxis: CGFloat.random(in: -500...500),
+                
+            )
+        }
+    }
 var body: some View {
                 
+            
+        ZStack {
+            Color.customBeige.ignoresSafeArea()
+            ForEach(0..<leafCount,id: \.self){oneLeaf in leaves[oneLeaf]}
+            
+            //.allowsTap
+            
+            
+            
+            
+            Spacer()
+            VStack {
                 
-                
-                
-ZStack {
-     Color.customBeige.ignoresSafeArea()
-     Image("leaf")
-     .phaseAnimator([true,false]) {content, phase in
-                content
-                .scaleEffect(phase ? 1.2 : 1.0)
-                            
-                }animation: {phase in
-                        .bouncy(duration: 0.3)
-                            
-            }
-                            
+                Image("sapling")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width:300,height:500)
+                    //.safeAreaInset(edge: .bottom)
                     
-                    
-                    
-Spacer()
-VStack {
-       Picker("Home screen or reflection screen?",selection: $toolbarSelection){
-       Image(systemName: "tree.fill").tag(0)
-        .foregroundStyle(Color(.customGreen))
-           Image(systemName:"person.crop.circle.fill").tag(1)
-                .foregroundColor(Color(.customGreen))
+                Picker("Home screen or reflection screen?",selection: $toolbarSelection){
+                    Image(systemName: "tree.fill").tag(0)
+                        .foregroundStyle(Color(.customGreen))
+                    Image(systemName:"person.crop.circle.fill").tag(1)
+                        .foregroundColor(Color(.customGreen))
                 }.pickerStyle(SegmentedPickerStyle())
-                        
+                
                 switch selectedScreen{
-                    case 0:
-                        Text("replace with view Home Screen()")
-                    case 1:
-                        Text("replace with view Reflection Screen")
-                    default:
-                        Text("replace with view No Screen Selected")
-                            
-                    }
-                        
+                case 0:
+                    Text("replace with view Home Screen()")
+                case 1:
+                    Text("Reflection Page")
+                default:
+                    Text("replace with view No Screen Selected")
+                    
                 }
-                .padding()
-                    
-                    
+                
             }
+            .padding()
+            
+            
+        }
+    
                 
                 
                 
@@ -63,6 +69,29 @@ VStack {
             
                 
 }
+struct FloatingLeaves: View{
+    @State private var floating = false
+    let xAxis: CGFloat
+    let yAxis: CGFloat
+    
+    var body: some View{
+        Image("leaf")
+            .resizable()
+            .scaledToFit()
+            //.opacity(0.50)
+            .frame(width: 230, height: 230)
+            .offset(x: xAxis, y: yAxis)
+            .rotationEffect(.degrees(floating ? -10 : 5))
+            .animation(.easeInOut(duration: 4.0).repeatForever(autoreverses: true),value: floating)
+            .onAppear {
+                floating.toggle()
+            }
+        
+        
+                }
+    
+}
+
 
 #Preview {
     ContentView()
