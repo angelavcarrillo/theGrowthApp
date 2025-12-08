@@ -76,7 +76,7 @@ struct CategoryPage: View {
                             Image(.leaf)
                                 .resizable()
                                 .interpolation(.none)
-                                .frame(width: 200, height: 200)
+                                .frame(width: 80, height: 80)
                                 .rotationEffect(.degrees(40))
                         }
                     }
