@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct RaindropView: View {
+    @State private var selectedCategory: ImageCategory = .travel
     @EnvironmentObject var treeStage: TreeStages
     @State private var selectedCategory: ImageCategory = .finance
     var body: some View {

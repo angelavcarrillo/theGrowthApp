@@ -24,6 +24,14 @@ struct RainDropsViewwithOverlay: View {
     
     var body: some View {
         ZStack{
+            //NavigationLink(
+                //destination: Text ("this line of code is a placeholder") //ReflectionView (onComplete: {fillState = .full
+        }
+          // )   //  isActive: $navigateToReflection
+           // ) {
+               // EmptyView()
+           // }
+            //.hidden()
             NavigationLink(
                 destination: ReflectionView(),
                 isActive: $navigateToReflection
@@ -70,7 +78,6 @@ struct RainDropsViewwithOverlay: View {
                 }
             }
         }
-    }
     private func imageForState () -> String {
         switch fillState {
         case .empty : return "emptyRaindrop"
@@ -78,6 +85,17 @@ struct RainDropsViewwithOverlay: View {
         case .full : return "fullRaindrop"
         }
     }
+    
+    
+    
+    }
+//    //private func imageForState () -> String {
+//        //switch fillState {
+//        //case .empty : return "emptyRaindrop"
+//        case .half : return "halffullRaindrop"
+//        case .full : return "fullRaindrop"
+//        }
+//    }
         struct ImageView: View{
             let selectedCategory: ImageCategory
             
@@ -98,4 +116,4 @@ struct RainDropsViewwithOverlay: View {
                 .navigationTitle(selectedCategory.title)
             }
         }
-    }
+
