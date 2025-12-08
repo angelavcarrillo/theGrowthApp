@@ -32,6 +32,13 @@ struct RainDropsViewwithOverlay: View {
                // EmptyView()
            // }
             //.hidden()
+            NavigationLink(
+                destination: ReflectionView(),
+                isActive: $navigateToReflection
+            ) {
+                EmptyView()
+            }
+            .hidden()
             
             
             HStack(alignment: .center){
