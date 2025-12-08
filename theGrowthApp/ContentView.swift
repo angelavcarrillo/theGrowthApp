@@ -3,9 +3,10 @@
 import SwiftUI
 
 struct ContentView: View {
-@State private var toolbarSelection = 0
 @State private var selectedScreen: Int = 0
 @State private var floating = false
+@State private var move = NavigationPath()
+@StateObject var treeStage = TreeStages()
 let leafCount = 20
     
     
@@ -21,6 +22,7 @@ let leafCount = 20
 var body: some View {
                 
             
+    NavigationStack(path: $move) {
         ZStack {
             Color.customBeige.ignoresSafeArea()
             ForEach(0..<leafCount,id: \.self){oneLeaf in leaves[oneLeaf]}
@@ -30,45 +32,56 @@ var body: some View {
             
             
             
-            Spacer()
+            //Spacer()
             VStack {
-                
-                Image("sapling")
+                Spacer()
+                Image(treeStage.imageName)
                     .resizable()
                     .scaledToFit()
-                    .frame(width:300,height:500)
-                    //.safeAreaInset(edge: .bottom)
-                    
-                Picker("Home screen or reflection screen?",selection: $toolbarSelection){
+                    .frame(width:300,height:300)
+                //.safeAreaInset(edge: .bottom)
+                Spacer()
+                Picker("Home screen or reflection screen?",selection: $selectedScreen){
                     Image(systemName: "tree.fill").tag(0)
-                        .foregroundStyle(Color(.customGreen))
                     Image(systemName:"person.crop.circle.fill").tag(1)
-                        .foregroundColor(Color(.customGreen))
-                }.pickerStyle(SegmentedPickerStyle())
-                
-                switch selectedScreen{
-                case 0:
-                    Text("replace with view Home Screen()")
-                case 1:
-                    Text("Reflection Page")
-                default:
-                    Text("replace with view No Screen Selected")
-                    
-                }
+                    Image(systemName: "drop.fill").tag(2)
+                        
+                }.pickerStyle(.segmented)
+                .tint(Color(.red))
+                .onChange(of: selectedScreen) {navigate(to: selectedScreen)
+                    }
+
                 
             }
             .padding()
             
             
         }
+        .navigationDestination(for: Int.self){
+            value in switch value{
+            case 0:
+                ContentView()
+            case 1:
+                ReflectionView()
+            case 2:
+                RaindropView()
+            default:
+                ContentView()
+            }
+        }
+    }
     
                 
-                
-                
+
+    }
+    func navigate(to screen: Int){
+        move.removeLast(move.count)
+        move.append(screen)
         }
             
                 
 }
+
 struct FloatingLeaves: View{
     @State private var floating = false
     let xAxis: CGFloat
@@ -79,7 +92,7 @@ struct FloatingLeaves: View{
             .resizable()
             .scaledToFit()
             //.opacity(0.50)
-            .frame(width: 230, height: 230)
+            .frame(width: 100, height: 100)
             .offset(x: xAxis, y: yAxis)
             .rotationEffect(.degrees(floating ? -10 : 5))
             .animation(.easeInOut(duration: 4.0).repeatForever(autoreverses: true),value: floating)

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ReflectionView: View {
     var body: some View {
-        NavigationStack{
+//removed navigatijonstack,,use link instead
             VStack(spacing: 20){
                 Text("Reflection")
                     .font(.largeTitle)
@@ -72,7 +72,7 @@ struct ReflectionView: View {
                 Spacer()
             }
             .padding()
-        }
+        
     }
 }
 

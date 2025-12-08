@@ -25,7 +25,7 @@ struct RainDropsViewwithOverlay: View {
     var body: some View {
         ZStack{
             NavigationLink(
-                destination: Text ("ReflectionView should be entered here and declared "), //placeholder for the line of code below //ReflectionView(onComplete:{fillState = .full)},
+                destination: ReflectionView(),
                 isActive: $navigateToReflection
             ) {
                 EmptyView()
