@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RaindropView: View {
-    @State private var selectedCategory: ImageCategory = .finance
+    @State private var selectedCategory: ImageCategory = .travel
     var body: some View {
         HStack{
             VStack{
