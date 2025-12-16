@@ -1,5 +1,6 @@
 
 import SwiftUI
+import Foundation
 internal import Combine
 
 class TreeStages: ObservableObject {
@@ -7,9 +8,9 @@ class TreeStages: ObservableObject {
     var imageName:String{
         switch stages{
         case 1:
-            return "sapling"
+            return "treeStage3"
         case 2:
-            return "treeStage2"
+            return "treeStage3"
         case 3:
             return "treeStage3"
         default:
@@ -17,7 +18,7 @@ class TreeStages: ObservableObject {
         }
     }
     
-    func growTree(forRaindrop index: Int){
+func growTree(forRaindrop index: Int){
         stages = max(stages, index + 1)
     }
     

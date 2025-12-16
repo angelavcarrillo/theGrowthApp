@@ -62,43 +62,42 @@ struct CategoryPage: View {
 
                 Spacer()
 
-                // Grow Button
-                Button(action: {
-                    print("")
-                }) {
-                    ZStack {
-                        Text("Let’s Grow!")
-                            .font(.system(size: 20, weight: .semibold))
+
+
+                    NavigationLink(destination:ContentView()) {
+                        ZStack {
+                            Text("Let’s Grow!")
+                                .font(.system(size: 20, weight: .semibold))
                             
-                        
-                        HStack {
-                            Spacer()
-                            Image(.leaf)
-                                .resizable()
-                                .interpolation(.none)
-                                .frame(width: 80, height: 80)
-                                .rotationEffect(.degrees(40))
+                            
+                            HStack {
+                                Spacer()
+                                Image(.leaf)
+                                    .resizable()
+                                    .interpolation(.none)
+                                    .frame(width: 80, height: 80)
+                                    .rotationEffect(.degrees(40))
+                            }
                         }
+                        .foregroundColor(.black)
+                        .frame(maxWidth: .infinity, maxHeight: 60)
+                        .background(
+                            Color.white
+                                .cornerRadius(30)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 30)
+                                        .stroke(Color.black.opacity(0.6), lineWidth: 2)
+                                )
+                                .shadow(radius: 5)
+                        )
                     }
-                    .foregroundColor(.black)
-                    .frame(maxWidth: .infinity, maxHeight: 60)
-                    .background(
-                        Color.white
-                            .cornerRadius(30)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 30)
-                                    .stroke(Color.black.opacity(0.6), lineWidth: 2)
-                            )
-                            .shadow(radius: 5)
-                    )
-                }
+                
             }
             .padding(.horizontal, 10)
             .padding(.bottom, 35)
         }
     }
 
-    // Selection logic (max 3)
     private func toggle(_ category: String) {
 
         if selectedCategories.contains(category) {
