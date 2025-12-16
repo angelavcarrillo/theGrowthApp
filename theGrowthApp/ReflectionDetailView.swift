@@ -4,6 +4,7 @@ struct ReflectionDetailView: View {
     @Binding var reflection: Reflection
     @Environment(\.dismiss) private var dismiss
     
+    let onComplete: () -> Void
     var body: some View {
         ZStack {
             Color(.customBeige)
@@ -11,27 +12,26 @@ struct ReflectionDetailView: View {
             
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
-                    Text("Reflection")
-                        .font(.title2)
-                        .bold()
+//                    Text("Reflection")
+//                        .font(.title2)
+//                        .bold()
                     
-                    // Category pill 
                     Text(reflection.category)
                         .font(.headline)
                         .padding(.horizontal, 40)
                         .padding(.vertical, 6)
-                        .background(Color.white)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 16)
-                                .stroke(Color.gray.opacity(0.35), lineWidth: 1)
-                        )
-                        .shadow(radius: 1)
+                        //.background(Color.white)
+                        .background(Capsule()
+                            .fill(Color.white) )
+                        .overlay(RoundedRectangle(cornerRadius: 16)
+                            .stroke(Color.gray.opacity(0.35), lineWidth: 1)
+                )
+                        .shadow(radius: 5)
                         .frame(maxWidth: .infinity, alignment: .center)
-                    
-                    // Question box
+  
                     RoundedRectangle(cornerRadius: 32)
                         .fill(Color.white)
-                        .shadow(radius: 3)
+                        .shadow(radius: 10)
                         .overlay(
                             VStack(spacing: 16) {
                                 Text(reflection.question)
@@ -60,6 +60,7 @@ struct ReflectionDetailView: View {
                         )
                     
                     Button("Save") {
+                        onComplete()
                         
                         dismiss()
                     }
@@ -68,7 +69,7 @@ struct ReflectionDetailView: View {
                     .background(Color.customGreen)
                     .foregroundColor(.white)
                     .cornerRadius(20)
-                    
+                    .shadow(radius: 5)
                     Spacer(minLength: 20)
                 }
                 .padding(24)
@@ -90,7 +91,7 @@ struct ReflectionDetailView_Previews: PreviewProvider {
         
         var body: some View {
             NavigationStack {
-                ReflectionDetailView(reflection: $sample)
+                ReflectionDetailView(reflection: $sample, onComplete: {})
             }
         }
     }

@@ -19,12 +19,14 @@ struct OnboardingView: View {
                 .ignoresSafeArea() // fills whole screen
             
                 VStack {
-                    //Spacer()
+                    Spacer()
+                        .frame(height:100)
+                    
                     Image(.leaf)
                         .resizable()
                         .interpolation(.none)
-                        .frame(width:100,height:100)
-                        .padding  (.top, -200)
+                        .frame(width:200,height:200)
+                        .padding  (.top, -300)
                     
                     Text("Welcome to Growth!")
                         .font(.largeTitle)
